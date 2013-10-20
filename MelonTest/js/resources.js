@@ -1,8 +1,16 @@
 game.resources = [
     { name: "tilesheet", type: "image", src: "data/map/tilesheet.png" },
+    { name: "coll", type: "image", src: "data/map/coll.png" },
     { name: "sky-gradient", type: "image", src: "data/img/sky-gradient.jpg" },
+    { name: "trees", type: "image", src: "data/img/trees.png" },
+
     { name: "girl", type: "image", src: "data/img/girl.png" },
-    { name: "map", type: "tmx", src: "data/map/1.tmx" }
+
+    { name: "furball", type: "image", src: "data/img/furball.png" },
+
+    { name: "sweets", type: "image", src: "data/img/sweets.png" },
+
+    { name: "map", type: "tmx", src: "data/map/1.xml" }
 
 	/* Graphics. 
 	 * @example
