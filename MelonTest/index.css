@@ -15,6 +15,8 @@ body {
 
     /* Allow canvas to hit the edges of the browser viewport. */
     margin: 0;
+
+    font: normal 10px verdana;
 }
 
 #screen canvas {
