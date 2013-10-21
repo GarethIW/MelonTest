@@ -35,6 +35,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.attacking = false;
         this.alwaysUpdate = true;
 
+        this.facing = 1;
+
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
@@ -50,11 +52,13 @@ game.PlayerEntity = me.ObjectEntity.extend({
         if (me.input.isKeyPressed('left')) {
             // flip the sprite on horizontal axis
             this.flipX(true);
+            this.facing = -1;
             // update the entity velocity
             this.vel.x -= this.accel.x * me.timer.tick;
         } else if (me.input.isKeyPressed('right')) {
             // unflip the sprite
             this.flipX(false);
+            this.facing = 1;
             // update the entity velocity
             this.vel.x += this.accel.x * me.timer.tick;
         } else {
@@ -68,6 +72,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
                 this.vel.y = -this.maxVel.y * me.timer.tick;
                 // set the jumping flag
                 this.jumping = true;
+
+                me.audio.play("jump", false, null, 0.5);
             }
 
         }
@@ -79,10 +85,17 @@ game.PlayerEntity = me.ObjectEntity.extend({
                     this.attacking = false;
                 }).bind(this));
                 this.renderable.setAnimationFrame(0);
+
+                me.audio.play("melee", false, null, 1);
             }
         }
+        if (me.input.isKeyPressed("throw")) {
+            var bul = new game.ProjectileEntity((this.pos.x + (this.renderable.hWidth-15)) + (this.facing * 10), this.pos.y, { x: this.facing * 15, y: 0 }, { image: "jack", spritewidth: 30, spriteheight: 32});
+            me.game.add(bul);
+        }
 
-        if (this.jumping && !this.attacking) {
+
+        if ((this.jumping || this.falling) && !this.attacking) {
             this.renderable.setCurrentAnimation("jump");
         }
         else {

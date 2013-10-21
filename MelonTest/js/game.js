@@ -43,7 +43,10 @@ var game = {
 
         // Collectibles
         me.entityPool.add("SweetEntity", game.SweetEntity);
+        me.entityPool.add("JackEntity", game.JackEntity);
         me.entityPool.add("BlockEntity", game.BlockEntity);
+        me.entityPool.add("ProjectileEntity", game.ProjectileEntity);
+
 
         // Enemies
         me.entityPool.add("EnemyFurball", game.EnemyFurball);
@@ -54,6 +57,7 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.UP, "jump", true);
         me.input.bindKey(me.input.KEY.X, "attack", true);
+        me.input.bindKey(me.input.KEY.Z, "throw", true);
 
         //me.debug.renderHitBox = true;
 

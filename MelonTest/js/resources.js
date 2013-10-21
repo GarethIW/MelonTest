@@ -11,7 +11,15 @@ game.resources = [
     { name: "sweets", type: "image", src: "data/img/sweets.png" },
     { name: "block", type: "image", src: "data/img/block.png" },
 
-    { name: "map", type: "tmx", src: "data/map/1.xml" }
+    { name: "jack", type: "image", src: "data/img/jack.png" },
+
+    { name: "map", type: "tmx", src: "data/map/1.xml" },
+
+
+	{ name: "jump", type: "audio", src: "data/sfx/", channel: 2 },
+    { name: "melee", type: "audio", src: "data/sfx/", channel: 3 },
+    { name: "tilly_die", type: "audio", src: "data/sfx/", channel: 2 }
+
 
 	/* Graphics. 
 	 * @example
@@ -36,6 +44,5 @@ game.resources = [
 	
 	/* Sound effects. 
 	 * @example
-	 * {name: "example_sfx", type: "audio", src: "data/sfx/", channel : 2}
 	 */
 ];

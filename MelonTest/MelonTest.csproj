@@ -73,13 +73,15 @@
     <Content Include="data\map\1.xml" />
     <Content Include="data\map\coll.png" />
     <Content Include="data\map\tilesheet.png" />
-    <Content Include="data\sfx\.placeholder" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\img\sky-gradient.jpg" />
+    <Content Include="data\sfx\jump.mp3" />
     <Content Include="index.css" />
     <Content Include="index.html" />
     <Content Include="js\entities\block.js" />
+    <Content Include="js\entities\projectile.js" />
+    <Content Include="js\entities\jack.js" />
     <Content Include="js\entities\enemies\furball.js" />
     <Content Include="js\entities\hero.js" />
     <Content Include="js\entities\sweet.js" />

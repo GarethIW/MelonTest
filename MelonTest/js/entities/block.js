@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../lib/melonJS-0.9.9.js" />
 
 /*----------------
- Sweets entity
+Block entity
 ------------------------ */
 game.BlockEntity = me.ObjectEntity.extend({
 
@@ -12,6 +12,8 @@ game.BlockEntity = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         this.updateColRect(28, 8, 0, 75);
+
+        this.isJack = settings.isjack;
 
         this.collidable = true;
     },
@@ -30,13 +32,20 @@ game.BlockEntity = me.ObjectEntity.extend({
       
         if (res.y < 0) {
             //var sweet = me.entityPool.newInstanceOf("SweetEntity", this.pos.x, this.pos.y-64, { image: "sweets", spritewidth: 48, width: 64, height: 64, name: "SweetEntity", z: 6 });
-            var sweet = new game.SweetEntity(this.pos.x, this.pos.y, { image: "sweets", spritewidth: 48, spriteheight: 48, z: 0 });
-            sweet.z = 3;
-            me.game.add(sweet);
+            var obj;
+            
+            if (this.isJack) {
+                obj = new game.JackEntity(this.pos.x, this.pos.y, { image: "jack", spritewidth: 30, spriteheight: 32, z: 0 });
+            }
+            else {
+                obj = new game.SweetEntity(this.pos.x, this.pos.y, { image: "sweets", spritewidth: 48, spriteheight: 48, z: 0 });
+            }
+            obj.z = 3;
+            me.game.add(obj);
             
             //me.game.sort();
 
-            var tween = new me.Tween(sweet.pos).to({ y: this.pos.y - 56 }, 500).onComplete((function () { sweet.z = 3;}).bind(sweet));
+            var tween = new me.Tween(obj.pos).to({ y: this.pos.y - (32 + (obj.renderable.height/2)) }, 500).onComplete((function () { obj.z = 3; }).bind(obj));
             tween.easing(me.Tween.Easing.Quadratic.Out);
             tween.start();
 

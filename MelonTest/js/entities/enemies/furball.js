@@ -49,7 +49,8 @@ game.EnemyFurball = me.ObjectEntity.extend({
 
         // res.y >0 means touched by something on the bottom
         // which mean at top position for this one
-        if (this.alive && obj.attacking && !this.renderable.isFlickering() && !this.dying && this.knockbackTime<=0) {
+        if (this.alive && (obj.attacking || obj instanceof game.ProjectileEntity) && !this.renderable.isFlickering() && !this.dying && this.knockbackTime <= 0) {
+            if (obj instanceof game.ProjectileEntity) me.game.remove(obj);
             if (this.canKnockback) this.knockback((this.pos.x+this.renderable.hWidth)-(obj.pos.x+obj.renderable.hWidth));
             this.health--;
             if (this.health > 0) {
