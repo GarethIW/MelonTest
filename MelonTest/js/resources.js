@@ -9,6 +9,7 @@ game.resources = [
     { name: "furball", type: "image", src: "data/img/furball.png" },
 
     { name: "sweets", type: "image", src: "data/img/sweets.png" },
+    { name: "block", type: "image", src: "data/img/block.png" },
 
     { name: "map", type: "tmx", src: "data/map/1.xml" }
 

@@ -43,6 +43,7 @@ var game = {
 
         // Collectibles
         me.entityPool.add("SweetEntity", game.SweetEntity);
+        me.entityPool.add("BlockEntity", game.BlockEntity);
 
         // Enemies
         me.entityPool.add("EnemyFurball", game.EnemyFurball);

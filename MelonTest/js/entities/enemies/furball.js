@@ -34,6 +34,11 @@ game.EnemyFurball = me.ObjectEntity.extend({
         this.health = 2;
         this.dying = false;
 
+        this.canKnockback = true;
+        this.knockbackTime = 0;
+
+        this.constrained = true;
+
         this.alwaysUpdate = true;
 
     },
@@ -44,7 +49,8 @@ game.EnemyFurball = me.ObjectEntity.extend({
 
         // res.y >0 means touched by something on the bottom
         // which mean at top position for this one
-        if (this.alive && obj.attacking && !this.renderable.isFlickering() && !this.dying) {
+        if (this.alive && obj.attacking && !this.renderable.isFlickering() && !this.dying && this.knockbackTime<=0) {
+            if (this.canKnockback) this.knockback((this.pos.x+this.renderable.hWidth)-(obj.pos.x+obj.renderable.hWidth));
             this.health--;
             if (this.health > 0) {
                 this.renderable.flicker(45);
@@ -61,10 +67,10 @@ game.EnemyFurball = me.ObjectEntity.extend({
         //if (!this.inViewport)
           //  return false;
 
-        if (this.alive && !this.dying) {
-            if (this.walkLeft && this.pos.x <= this.startX) {
+        if (this.alive && !this.dying && !this.knockbackTime > 0) {
+            if (this.walkLeft && this.pos.x <= this.startX && this.constrained) {
                 this.walkLeft = false;
-            } else if (!this.walkLeft && this.pos.x >= this.endX) {
+            } else if (!this.walkLeft && this.pos.x >= this.endX && this.constrained) {
                 this.walkLeft = true;
             }
             // make it walk
@@ -72,11 +78,41 @@ game.EnemyFurball = me.ObjectEntity.extend({
             this.vel.x += (this.walkLeft) ? -this.accel.x * me.timer.tick : this.accel.x * me.timer.tick;
 
         } else {
-            this.vel.x = 0;
+            if (!this.knockbackTime > 0) this.vel.x = 0;
         }
 
+        if (this.knockbackTime > 0) {
+            if (this.vel.x > 0) this.vel.x -= 0.1;
+            if (this.vel.x < 0) this.vel.x += 0.1;
+            //this.vel.x += this.accel.x * me.timer.tick;
+
+            if (this.falling) this.constrained = false;
+
+            this.knockbackTime -= me.timer.tick;
+
+            if (!this.dying) {
+                this.renderable.animationpause = true;
+                this.renderable.setAnimationFrame(0);
+            }
+        }
+        else {
+            this.maxVel.x = 2;
+            if (!this.dying) {
+                this.renderable.animationpause = false;
+            }
+        }
+
+        
+
         // check and update movement
-        this.updateMovement();
+        var res = this.updateMovement();
+        if (res.x != 0) {
+            if (this.walkLeft) {
+                this.walkLeft = false;
+            } else if (!this.walkLeft) {
+                this.walkLeft = true;
+            }
+        }
 
         if (this.dying && this.renderable.anim["die"].idx == 7) {
             this.renderable.animationpause = true;
@@ -85,7 +121,7 @@ game.EnemyFurball = me.ObjectEntity.extend({
         }
 
         // update animation if necessary
-        if (this.vel.x != 0 || this.vel.y != 0 || this.dying) {
+        if (this.vel.x != 0 || this.vel.y != 0 || this.dying || this.knockback>0) {
             // update object animation
             this.parent();
             return true;
@@ -94,6 +130,14 @@ game.EnemyFurball = me.ObjectEntity.extend({
         
 
         return false;
+    },
+
+    knockback: function (dir) {
+        if (dir > 0) dir = 1;
+        if (dir < 0) dir = -1;
+        this.maxVel.x = 20;
+        this.vel.x = 5 * dir;
+        this.knockbackTime = 45;
     },
 
     die: function () {

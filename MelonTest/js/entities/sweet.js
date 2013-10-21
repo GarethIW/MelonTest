@@ -22,6 +22,8 @@ game.SweetEntity = me.CollectableEntity.extend({
 
         this.startTween();
         
+        this.pos.x += 8;
+        this.z = 3;
     },
 
     startTween: function() {
@@ -36,6 +38,8 @@ game.SweetEntity = me.CollectableEntity.extend({
         this.parent();
 
         this.renderable.angle = this.rotation;
+
+        
 
         return true;
     },

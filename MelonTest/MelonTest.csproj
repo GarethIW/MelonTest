@@ -28,6 +28,10 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>false</PublishDatabases>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,6 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\bgm\.placeholder" />
+    <Content Include="data\img\block.png" />
+    <Content Include="data\img\furball.png" />
     <Content Include="data\img\girl.png" />
     <Content Include="data\img\sweets.png" />
     <Content Include="data\img\trees.png" />
@@ -73,6 +79,7 @@
     <Content Include="data\img\sky-gradient.jpg" />
     <Content Include="index.css" />
     <Content Include="index.html" />
+    <Content Include="js\entities\block.js" />
     <Content Include="js\entities\enemies\furball.js" />
     <Content Include="js\entities\hero.js" />
     <Content Include="js\entities\sweet.js" />
@@ -88,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

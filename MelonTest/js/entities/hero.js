@@ -20,7 +20,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         this.renderable.anim = {};
         this.renderable.addAnimation("walk", [0, 1, 2, 3, 4, 5]);
-        this.renderable.addAnimation("attack", [6, 7, 8]);
+        this.renderable.addAnimation("attack", [8, 6, 7]);
+        this.renderable.addAnimation("jump", [9]);
         this.renderable.setCurrentAnimation("walk");
         
         this.setVelocity(0.5, 1);
@@ -29,9 +30,10 @@ game.PlayerEntity = me.ObjectEntity.extend({
         
         this.gravity = 0.5;
       
-        this.updateColRect(85, 60, 5, 52);
+        this.updateColRect(80, 60, 5, 52);
 
         this.attacking = false;
+        this.alwaysUpdate = true;
 
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -80,18 +82,23 @@ game.PlayerEntity = me.ObjectEntity.extend({
             }
         }
 
-        
+        if (this.jumping && !this.attacking) {
+            this.renderable.setCurrentAnimation("jump");
+        }
+        else {
+            if (!this.renderable.isCurrentAnimation("walk") && !this.attacking) this.renderable.setCurrentAnimation("walk");
+        }
 
         // check & update player movement
         this.updateMovement();
 
         if (this.attacking) {
-            this.updateColRect(30, 160, 5, 52);
+            this.updateColRect(40, 140, 5, 52);
         }
 
         var res = me.game.collide(this);
 
-        this.updateColRect(85, 60, 5, 52);
+        this.updateColRect(80, 60, 5, 52);
 
         if (res) {
             //if (res.obj.type == me.game.COLLECTABLE_OBJECT) {
