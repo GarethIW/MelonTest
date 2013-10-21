@@ -46,11 +46,13 @@ game.SweetEntity = me.CollectableEntity.extend({
 
     // this function is called by the engine, when
     // an object is touched by something (here collected)
-    onCollision: function () {
+    onCollision: function (res, obj) {
         // do something when collected
         var tween = new me.Tween(this.pos).to(me.game.viewport.localToWorld(100,-50), 500).onComplete(this.endCollect.bind(this));
         tween.easing(me.Tween.Easing.Quadratic.In);
         tween.start();
+
+        obj.sweets++;
 
         // make sure it cannot be collected "again"
         this.collidable = false;

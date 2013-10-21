@@ -37,6 +37,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         this.facing = 1;
 
+        this.jacks = 0;
+        this.sweets = 0;
+
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
@@ -89,9 +92,11 @@ game.PlayerEntity = me.ObjectEntity.extend({
                 me.audio.play("melee", false, null, 1);
             }
         }
-        if (me.input.isKeyPressed("throw")) {
+        if (me.input.isKeyPressed("throw") && this.jacks>0) {
             var bul = new game.ProjectileEntity((this.pos.x + (this.renderable.hWidth-15)) + (this.facing * 10), this.pos.y, { x: this.facing * 15, y: 0 }, { image: "jack", spritewidth: 30, spriteheight: 32});
             me.game.add(bul);
+
+            this.jacks--;
         }
 
 
