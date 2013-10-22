@@ -26,7 +26,11 @@ game.HUD.Container = me.ObjectContainer.extend({
 
         // add our child score object at position
         this.addChild(new game.HUD.JacksItem(10, 10));
-        this.addChild(new me.SpriteObject(20, 20, me.loader.getImage("jack"), 30, 32));
+
+        var spr = new me.SpriteObject(20, 20, me.loader.getImage("jack"), 30, 32);
+        //spr.isRenderable = true;
+        spr.z = 2;
+        this.addChild(spr);
 
         this.alwaysUpdate = true;
     }
