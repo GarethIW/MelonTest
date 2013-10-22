@@ -178,43 +178,43 @@
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4160" y="320" width="64" height="64">
+  <object name="SweetEntity" x="4032" y="320" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4224" y="384" width="64" height="64">
+  <object name="SweetEntity" x="4352" y="704" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4288" y="448" width="64" height="64">
+  <object name="SweetEntity" x="4160" y="448" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4544" y="704" width="64" height="64">
+  <object name="SweetEntity" x="4352" y="576" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4352" y="512" width="64" height="64">
+  <object name="SweetEntity" x="4288" y="640" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4416" y="576" width="64" height="64">
+  <object name="SweetEntity" x="4480" y="704" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
    </properties>
   </object>
-  <object name="SweetEntity" x="4480" y="640" width="64" height="64">
+  <object name="SweetEntity" x="4480" y="576" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>
@@ -239,6 +239,18 @@
    </properties>
   </object>
   <object name="SweetEntity" x="4672" y="64" width="64" height="64">
+   <properties>
+    <property name="image" value="sweets"/>
+    <property name="spritewidth" value="48"/>
+   </properties>
+  </object>
+  <object name="SweetEntity" x="4416" y="640" width="64" height="64">
+   <properties>
+    <property name="image" value="sweets"/>
+    <property name="spritewidth" value="48"/>
+   </properties>
+  </object>
+  <object name="SweetEntity" x="4544" y="640" width="64" height="64">
    <properties>
     <property name="image" value="sweets"/>
     <property name="spritewidth" value="48"/>

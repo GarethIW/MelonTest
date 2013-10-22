@@ -2,6 +2,12 @@
 
 /* Game namespace */
 var game = {
+
+    data: {
+        score: 0,
+        jacks: 0
+    },
+
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
@@ -29,6 +35,8 @@ var game = {
         // Initialize melonJS and display a loading screen.
         me.state.set(me.state.LOADING, new myLoadingScreen());
         me.state.change(me.state.LOADING);
+
+        
     },
 
 

@@ -15,6 +15,7 @@ game.resources = [
 
     { name: "map", type: "tmx", src: "data/map/1.xml" },
 
+    { name: "font", type: "image", src: "data/img/font.png" },
 
 	{ name: "jump", type: "audio", src: "data/sfx/", channel: 2 },
     { name: "melee", type: "audio", src: "data/sfx/", channel: 3 },

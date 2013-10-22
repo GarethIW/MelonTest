@@ -48,6 +48,7 @@ game.JackEntity = me.CollectableEntity.extend({
 
         obj.jacks++;
 
+
         // make sure it cannot be collected "again"
         this.collidable = false;
     },

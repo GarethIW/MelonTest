@@ -124,6 +124,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
             //}
         }
 
+        game.data.jacks = this.jacks;
+
         // update animation if necessary
         if (this.vel.x != 0 || this.vel.y != 0 || this.attacking) {
             // update object animation

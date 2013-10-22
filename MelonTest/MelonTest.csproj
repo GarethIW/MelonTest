@@ -66,6 +66,7 @@
   <ItemGroup>
     <Content Include="data\bgm\.placeholder" />
     <Content Include="data\img\block.png" />
+    <Content Include="data\img\font.png" />
     <Content Include="data\img\furball.png" />
     <Content Include="data\img\girl.png" />
     <Content Include="data\img\jack.png" />
@@ -92,6 +93,7 @@
     <Content Include="js\entities\hero.js" />
     <Content Include="js\entities\sweet.js" />
     <Content Include="js\game.js" />
+    <Content Include="js\hud.js" />
     <Content Include="js\resources.js" />
     <Content Include="js\screens\loading.js" />
     <Content Include="js\screens\play.js" />
