@@ -68,6 +68,7 @@
     <Content Include="data\img\block.png" />
     <Content Include="data\img\furball.png" />
     <Content Include="data\img\girl.png" />
+    <Content Include="data\img\jack.png" />
     <Content Include="data\img\sweets.png" />
     <Content Include="data\img\trees.png" />
     <Content Include="data\map\1.xml" />
@@ -77,6 +78,11 @@
   <ItemGroup>
     <Content Include="data\img\sky-gradient.jpg" />
     <Content Include="data\sfx\jump.mp3" />
+    <None Include="data\sfx\jump.oga" />
+    <Content Include="data\sfx\melee.mp3" />
+    <None Include="data\sfx\melee.oga" />
+    <Content Include="data\sfx\tilly_die.mp3" />
+    <None Include="data\sfx\tilly_die.oga" />
     <Content Include="index.css" />
     <Content Include="index.html" />
     <Content Include="js\entities\block.js" />
