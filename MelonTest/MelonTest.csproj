@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="index0910.html" />
     <Content Include="data\bgm\.placeholder" />
     <Content Include="data\img\block.png" />
     <Content Include="data\img\font.png" />
@@ -98,6 +99,7 @@
     <Content Include="js\screens\loading.js" />
     <Content Include="js\screens\play.js" />
     <Content Include="js\screens\title.js" />
+    <Content Include="lib\melonJS-0.9.10.js" />
     <Content Include="lib\melonJS-0.9.8-min.js" />
     <Content Include="lib\melonJS-0.9.8.js" />
     <Content Include="lib\melonJS-0.9.9.js" />

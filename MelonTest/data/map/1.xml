@@ -361,7 +361,7 @@
   <object name="EnemyFurball" x="3840" y="512" width="256" height="64"/>
  </objectgroup>
  <objectgroup color="#00aa00" name="Spawn" width="75" height="15">
-  <object name="Tilly" x="141" y="775" width="40" height="52">
+  <object name="Tilly" x="1" y="689" width="148" height="140">
    <properties>
     <property name="" value=""/>
     <property name="image" value="girl"/>

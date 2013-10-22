@@ -28,7 +28,7 @@ game.HUD.Container = me.ObjectContainer.extend({
         this.addChild(new game.HUD.JacksItem(10, 10));
 
         var spr = new me.SpriteObject(20, 20, me.loader.getImage("jack"), 30, 32);
-        //spr.isRenderable = true;
+        spr.floating = true;
         spr.z = 2;
         this.addChild(spr);
 
