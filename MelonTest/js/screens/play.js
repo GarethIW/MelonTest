@@ -3,7 +3,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	 *  action to perform on state change
 	 */
 	onResetEvent: function() {	
-	    me.levelDirector.loadLevel("map");
+	    me.levelDirector.loadLevel("map1");
 
 	    // add our HUD to the game world        
 	    me.game.add(new game.HUD.Container());

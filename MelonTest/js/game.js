@@ -5,7 +5,8 @@ var game = {
 
     data: {
         score: 0,
-        jacks: 0
+        jacks: 0,
+        lives: 3
     },
 
     // Run on page load.
@@ -67,9 +68,13 @@ var game = {
         me.input.bindKey(me.input.KEY.X, "attack", true);
         me.input.bindKey(me.input.KEY.Z, "throw", true);
 
+        me.input.bindKey(me.input.KEY.L, "levelskip", true); //function () { me.levelDirector.loadLevel("map2"); }.bind(this), true);
+
         //me.debug.renderHitBox = true;
 
         // Start the game.
         me.state.change(me.state.PLAY);
     }
+
+   
 };

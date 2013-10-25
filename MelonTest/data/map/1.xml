@@ -368,4 +368,13 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="Exit" width="75" height="15">
+  <object name="me.LevelEntity" x="4736" y="704" width="64" height="128">
+   <properties>
+    <property name="duration" value="250"/>
+    <property name="fade" value="#000000"/>
+    <property name="to" value="map2"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

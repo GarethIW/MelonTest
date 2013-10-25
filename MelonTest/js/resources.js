@@ -1,5 +1,6 @@
 game.resources = [
     { name: "tilesheet", type: "image", src: "data/map/tilesheet.png" },
+    { name: "underground", type: "image", src: "data/map/underground.png" },
     { name: "coll", type: "image", src: "data/map/coll.png" },
     { name: "sky-gradient", type: "image", src: "data/img/sky-gradient.jpg" },
     { name: "trees", type: "image", src: "data/img/trees.png" },
@@ -13,9 +14,10 @@ game.resources = [
 
     { name: "jack", type: "image", src: "data/img/jack.png" },
 
-    { name: "map", type: "tmx", src: "data/map/1.xml" },
+    { name: "map1", type: "tmx", src: "data/map/1.xml" },
+    { name: "map2", type: "tmx", src: "data/map/2.xml" },
 
-    { name: "font", type: "image", src: "data/img/font.png" },
+    { name: "font", type: "image", src: "data/img/test.png" },
 
 	{ name: "jump", type: "audio", src: "data/sfx/", channel: 2 },
     { name: "melee", type: "audio", src: "data/sfx/", channel: 3 },

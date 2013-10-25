@@ -25,51 +25,39 @@ game.HUD.Container = me.ObjectContainer.extend({
         this.name = "HUD";
 
         // add our child score object at position
-        this.addChild(new game.HUD.JacksItem(10, 10));
+        this.addChild(new game.HUD.JacksItem(60, 22));
+        this.addChild(new game.HUD.ScoreItem(me.game.viewport.width / 2, 22));
+        this.addChild(new game.HUD.LivesItem(me.game.viewport.width - 80, 22));
 
         var spr = new me.SpriteObject(20, 20, me.loader.getImage("jack"), 30, 32);
         spr.floating = true;
         spr.z = 2;
         this.addChild(spr);
 
+
         this.alwaysUpdate = true;
-    }
+    },
+
+
 });
 
 
-/** 
- * a basic HUD item to display score
- */
-game.HUD.JacksItem = me.Renderable.extend({
-    /** 
-	 * constructor
-	 */
-    init: function (x, y) {
 
-        // call the parent constructor 
-        // (size does not matter here)
+game.HUD.JacksItem = me.Renderable.extend({ 
+    init: function (x, y) {
         this.parent(new me.Vector2d(x, y), 10, 10);
 
-
-
-        // create a font
-        this.font = new me.BitmapFont("font", { x: 32 });
+        this.font = new me.BitmapFont("font", { x: 32, y:32 });
         this.font.alignText = "bottom";
         this.font.set("left", 1);
 
-        // local copy of the global score
         this.jacks = 0;
 
-        // make sure we use screen coordinates
         this.floating = true;
     },
 
-    /**
-	 * update function
-	 */
     update: function () {
-        // we don't draw anything fancy here, so just
-        // return true if the score has been updated
+
         if (this.jacks !== game.data.jacks) {
             this.jacks = game.data.jacks;
             return true;
@@ -77,11 +65,64 @@ game.HUD.JacksItem = me.Renderable.extend({
         return false;
     },
 
-    /**
-	 * draw the score
-	 */
     draw: function (context) {
-        this.font.draw(context, game.data.jacks, this.pos.x, this.pos.y);
+        this.font.draw(context, "x" + game.data.jacks, this.pos.x, this.pos.y);
+        
     }
+});
 
+game.HUD.ScoreItem = me.Renderable.extend({
+    init: function (x, y) {
+        this.parent(new me.Vector2d(x, y), 10, 10);
+
+        this.font = new me.BitmapFont("font", { x: 32, y: 32 });
+        this.font.alignText = "bottom";
+        this.font.set("center", 1);
+
+        this.score = 0;
+
+        this.floating = true;
+    },
+
+    update: function () {
+
+        if (this.score !== game.data.score) {
+            this.score = game.data.score;
+            return true;
+        }
+        return false;
+    },
+
+    draw: function (context) {
+        this.font.draw(context, game.data.score, this.pos.x, this.pos.y);
+
+    }
+});
+
+game.HUD.LivesItem = me.Renderable.extend({
+    init: function (x, y) {
+        this.parent(new me.Vector2d(x, y), 10, 10);
+
+        this.font = new me.BitmapFont("font", { x: 32, y: 32 });
+        this.font.alignText = "bottom";
+        this.font.set("left", 1);
+
+        this.lives = 0;
+
+        this.floating = true;
+    },
+
+    update: function () {
+
+        if (this.lives !== game.data.lives) {
+            this.score = game.data.lives;
+            return true;
+        }
+        return false;
+    },
+
+    draw: function (context) {
+        this.font.draw(context, "x" + game.data.lives, this.pos.x, this.pos.y);
+
+    }
 });

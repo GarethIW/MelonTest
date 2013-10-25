@@ -44,10 +44,12 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.facing = 1;
 
         this.jacks = 0;
-        this.sweets = 0;
+
+        this.vppos = new me.Vector2d(x, y);
 
         // set the display to follow our position on both axis
-        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+        me.game.viewport.follow(this.vppos, me.game.viewport.AXIS.BOTH);
+        me.game.viewport.setDeadzone(50, 150);
 
     },
 
@@ -57,6 +59,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
  
     ------ */
     update: function () {
+
+        this.vppos.x = this.pos.x + this.renderable.hWidth;
+        this.vppos.y = this.pos.y + this.renderable.hHeight;
 
         if (!this.dying) {
             if (me.input.isKeyPressed('left')) {
@@ -113,6 +118,11 @@ game.PlayerEntity = me.ObjectEntity.extend({
             else {
                 if (!this.renderable.isCurrentAnimation("walk") && !this.attacking) this.renderable.setCurrentAnimation("walk");
             }
+
+            if (me.input.isKeyPressed("levelskip")) {
+                me.levelDirector.nextLevel();
+                return false;
+            }
         }
         // check & update player movement
         this.updateMovement();
@@ -129,7 +139,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         var res = me.game.collide(this);
 
-        this.updateColRect(80, 60, 90, 52);
+        this.updateColRect(90, 40, 90, 52);
 
         if (res) {
             //if (res.obj.type == me.game.COLLECTABLE_OBJECT) {
@@ -163,6 +173,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
             this.renderable.setCurrentAnimation("die");
 
             me.audio.play("tilly_die", false, null, 1);
+
+            game.data.lives--;
 
         }
     }

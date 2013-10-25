@@ -149,5 +149,6 @@ game.EnemyFurball = me.ObjectEntity.extend({
     die: function () {
         this.dying = true;
         this.renderable.setCurrentAnimation("die");
+        game.data.score += 5;
     }
 });

@@ -23,7 +23,9 @@ game.SweetEntity = me.CollectableEntity.extend({
         this.startTween();
         
         this.pos.x += 8;
-        this.z = 3;
+        this.z = 2;
+
+        this.alwaysUpdate = true;
     },
 
     startTween: function() {
@@ -32,6 +34,7 @@ game.SweetEntity = me.CollectableEntity.extend({
         var tween = new me.Tween(this).to({ rotation: (this.rotationDir * (Math.PI / 2)) - (Math.PI/4) }, 500 + (Math.random()*500)).onComplete(this.startTween.bind(this));
         tween.easing(me.Tween.Easing.Quadratic.Out);
         tween.start();
+
     },
 
     update: function () {
@@ -39,7 +42,8 @@ game.SweetEntity = me.CollectableEntity.extend({
 
         this.renderable.angle = this.rotation;
 
-        
+        if(this.collidable==true)
+            this.z = 3;
 
         return true;
     },
@@ -48,11 +52,11 @@ game.SweetEntity = me.CollectableEntity.extend({
     // an object is touched by something (here collected)
     onCollision: function (res, obj) {
         // do something when collected
-        var tween = new me.Tween(this.pos).to(me.game.viewport.localToWorld(100,-50), 500).onComplete(this.endCollect.bind(this));
+        var tween = new me.Tween(this.pos).to(me.game.viewport.localToWorld(me.game.viewport.width/2,-50), 500).onComplete(this.endCollect.bind(this));
         tween.easing(me.Tween.Easing.Quadratic.In);
         tween.start();
 
-        obj.sweets++;
+        this.z = 6;
 
         // make sure it cannot be collected "again"
         this.collidable = false;
@@ -60,6 +64,7 @@ game.SweetEntity = me.CollectableEntity.extend({
 
     endCollect: function () {
         // remove it
+        game.data.score++;
         me.game.remove(this);
     }
 
