@@ -3,16 +3,25 @@ game.resources = [
     { name: "underground", type: "image", src: "data/map/underground.png" },
     { name: "coll", type: "image", src: "data/map/coll.png" },
     { name: "sky-gradient", type: "image", src: "data/img/sky-gradient.jpg" },
+    { name: "cave-gradient", type: "image", src: "data/img/cave-gradient.png" },
     { name: "trees", type: "image", src: "data/img/trees.png" },
+    { name: "cave", type: "image", src: "data/img/cave.png" },
 
     { name: "girl", type: "image", src: "data/img/girl.png" },
+    { name: "tillyicon", type: "image", src: "data/img/tillyicon.png" },
 
     { name: "furball", type: "image", src: "data/img/furball.png" },
 
     { name: "sweets", type: "image", src: "data/img/sweets.png" },
     { name: "block", type: "image", src: "data/img/block.png" },
+    { name: "undergroundblock", type: "image", src: "data/img/undergroundblock.png" },
 
     { name: "jack", type: "image", src: "data/img/jack.png" },
+
+    { name: "ts_bg", type: "image", src: "data/img/titlebg.png" },
+    { name: "ts1", type: "image", src: "data/img/ts1.png" },
+    { name: "ts2", type: "image", src: "data/img/ts2.png" },
+    { name: "ts3", type: "image", src: "data/img/ts3.png" },
 
     { name: "map1", type: "tmx", src: "data/map/1.xml" },
     { name: "map2", type: "tmx", src: "data/map/2.xml" },

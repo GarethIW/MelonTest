@@ -47,6 +47,11 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         this.vppos = new me.Vector2d(x, y);
 
+        this.spawnPosition = new me.Vector2d(x, y);
+
+        this.deathTimer = 0;
+        this.gameOver = false;
+
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.vppos, me.game.viewport.AXIS.BOTH);
         me.game.viewport.setDeadzone(50, 150);
@@ -59,6 +64,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
  
     ------ */
     update: function () {
+
+        if (this.gameOver) return;
 
         this.vppos.x = this.pos.x + this.renderable.hWidth;
         this.vppos.y = this.pos.y + this.renderable.hHeight;
@@ -151,6 +158,17 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         if (this.dying && this.renderable.anim["die"].idx == 7) {
             this.renderable.animationpause = true;
+            this.deathTimer -= me.timer.tick;
+            if (this.deathTimer <= 0) {
+                if (game.data.lives == 0) {
+                    this.gameOver = true;
+                    // me.state.stop(true);
+                    me.state.change(me.state.MENU);
+                    return;
+                } else {
+                    me.game.viewport.fadeIn("#000000", 500, this.reset.bind(this));
+                }
+            }
             //this.renderable.alpha -= 0.01;
             //if (this.renderable.alpha <= 0.01) me.game.remove(this);
         }
@@ -171,12 +189,24 @@ game.PlayerEntity = me.ObjectEntity.extend({
         if (!this.dying) {
             this.dying = true;
             this.renderable.setCurrentAnimation("die");
-
+            this.renderable.setAnimationFrame(0);
             me.audio.play("tilly_die", false, null, 1);
 
             game.data.lives--;
 
+            this.deathTimer = 50;
+
         }
+    },
+
+    reset: function () {
+       
+        this.pos.x = this.spawnPosition.x;
+        this.pos.y = this.spawnPosition.y;
+        this.dying = false;
+        this.renderable.animationpause = false;
+        this.renderable.setCurrentAnimation("walk");
+        //me.game.viewport.fadeIn("#FFFFFF", 500);
     }
 
 });

@@ -17,7 +17,8 @@ game.JackEntity = me.CollectableEntity.extend({
         this.startTween();
         
         this.pos.x += 17;
-        this.z = 3;
+        this.z = 4;
+        me.game.sort();
     },
 
     startTween: function() {
@@ -33,7 +34,7 @@ game.JackEntity = me.CollectableEntity.extend({
 
         this.renderable.angle = this.rotation;
 
-        
+        if (this.collidable) this.z = 4;
 
         return true;
     },
@@ -42,16 +43,18 @@ game.JackEntity = me.CollectableEntity.extend({
     // an object is touched by something (here collected)
     onCollision: function (res, obj) {
         // do something when collected
-        var tween = new me.Tween(this.pos).to(me.game.viewport.localToWorld(200,-50), 500).onComplete(this.endCollect.bind(this));
-        tween.easing(me.Tween.Easing.Quadratic.In);
-        tween.start();
+        if (obj instanceof game.PlayerEntity) {
+            var tween = new me.Tween(this.pos).to(me.game.viewport.localToWorld(200, -50), 500).onComplete(this.endCollect.bind(this));
+            tween.easing(me.Tween.Easing.Quadratic.In);
+            tween.start();
 
-        obj.jacks++;
+            obj.jacks++;
 
-        this.z = 6;
+            this.z = 10;
 
-        // make sure it cannot be collected "again"
-        this.collidable = false;
+            // make sure it cannot be collected "again"
+            this.collidable = false;
+        }
     },
 
     endCollect: function () {

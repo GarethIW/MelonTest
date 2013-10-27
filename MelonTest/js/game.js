@@ -44,8 +44,10 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
-        //me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+
+        me.state.transition("fade", "#000000", 250);
 
         // add our player entity in the entity pool
         me.entityPool.add("tilly", game.PlayerEntity);
@@ -73,8 +75,65 @@ var game = {
         //me.debug.renderHitBox = true;
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        me.state.change(me.state.MENU);
     }
 
    
 };
+
+
+me.LevelEntity = me.ObjectEntity.extend(
+    /** @scope me.LevelEntity.prototype */
+    {
+        /** @ignore */
+        init: function (x, y, settings) {
+            this.parent(x, y, settings);
+
+            this.nextlevel = settings.to;
+
+            this.fade = settings.fade;
+            this.duration = settings.duration;
+            this.fading = false;
+
+            // a temp variable
+            this.gotolevel = settings.to;
+        },
+
+        /**
+         * @ignore
+         */
+        onFadeComplete: function () {
+            me.levelDirector.loadLevel(this.gotolevel);
+            me.game.viewport.fadeOut(this.fade, this.duration);
+        },
+
+        /**
+         * go to the specified level
+         * @name goTo
+         * @memberOf me.LevelEntity
+         * @function
+         * @param {String} [level=this.nextlevel] name of the level to load
+         * @protected
+         */
+        goTo: function (level) {
+            this.gotolevel = level || this.nextlevel;
+            // load a level
+            //console.log("going to : ", to);
+            if (this.fade && this.duration) {
+                if (!this.fading) {
+                    this.fading = true;
+                    me.game.viewport.fadeIn(this.fade, this.duration,
+                            this.onFadeComplete.bind(this));
+                }
+            } else {
+                me.levelDirector.loadLevel(this.gotolevel);
+            }
+        },
+
+        /** @ignore */
+        onCollision: function (res,obj) {
+            if (obj instanceof game.PlayerEntity) {
+                this.goTo();
+            }
+        }
+    });

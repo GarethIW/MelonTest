@@ -5067,8 +5067,16 @@ window.me = window.me || {};
 			// for string comparaisons
 			var _regExp = new RegExp(value, "i");
 			for (var i = this.children.length, obj; i--, obj = this.children[i];) {
-				if (obj instanceof me.ObjectContainer) {
-					objList = objList.concat(obj.getEntityByProp(prop, value));
+			    if (obj instanceof me.ObjectContainer) {
+			        if (typeof (obj[prop]) === 'string') {
+			            if (obj[prop].match(_regExp)) {
+			                objList.push(obj);
+			            }
+			        } else if (obj[prop] === value) {
+			            objList.push(obj);
+			        } else {
+			            objList = objList.concat(obj.getEntityByProp(prop, value));
+			        }
 				} else if (obj.isEntity) {
 					if (typeof (obj[prop]) === 'string') {
 						if (obj[prop].match(_regExp)) {

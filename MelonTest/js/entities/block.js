@@ -37,19 +37,19 @@ game.BlockEntity = me.ObjectEntity.extend({
             if (this.isJack) {
                 for (var i = 0; i < 3; i++) {
                     obj = new game.JackEntity(this.pos.x, this.pos.y, { image: "jack", spritewidth: 30, spriteheight: 32, z: 0 });
-                    var tween = new me.Tween(obj.pos).to({ x: obj.pos.x-20 + (i*20), y: this.pos.y - (32 + (obj.renderable.height / 2)) + (i==1?-20:0) }, 500).onComplete((function () { obj.z = 3; }).bind(obj));
+                    var tween = new me.Tween(obj.pos).to({ x: obj.pos.x-20 + (i*20), y: this.pos.y - (32 + (obj.renderable.height / 2)) + (i==1?-20:0) }, 500).onComplete((function () { obj.z = 4; }).bind(obj));
                     tween.easing(me.Tween.Easing.Quadratic.Out);
                     tween.start();
-                    obj.z = 3;
+                    obj.z = 4;
                     me.game.add(obj);
                 }
             }
             else {
                 obj = new game.SweetEntity(this.pos.x, this.pos.y, { image: "sweets", spritewidth: 48, spriteheight: 48, z: 0 });
-                var tween = new me.Tween(obj.pos).to({ y: this.pos.y - (32 + (obj.renderable.height / 2)) }, 500).onComplete((function () { obj.z = 3; }).bind(obj));
+                var tween = new me.Tween(obj.pos).to({ y: this.pos.y - (32 + (obj.renderable.height / 2)) }, 500).onComplete((function () { obj.z = 4; }).bind(obj));
                 tween.easing(me.Tween.Easing.Quadratic.Out);
                 tween.start();
-                obj.z = 3;
+                obj.z = 4;
                 me.game.add(obj);
             }
             

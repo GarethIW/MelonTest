@@ -34,6 +34,11 @@ game.HUD.Container = me.ObjectContainer.extend({
         spr.z = 2;
         this.addChild(spr);
 
+        spr = new me.SpriteObject(me.game.viewport.width - 120, 22, me.loader.getImage("tillyicon"), 32, 30);
+        spr.floating = true;
+        spr.z = 2;
+        this.addChild(spr);
+
 
         this.alwaysUpdate = true;
     },

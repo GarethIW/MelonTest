@@ -64,6 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\img\undergroundblock.png" />
+    <Content Include="data\map\2.xml" />
     <Content Include="data\map\underground.png" />
     <Content Include="index0910.html" />
     <Content Include="data\bgm\.placeholder" />
