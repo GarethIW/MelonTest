@@ -64,6 +64,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\img\cave-gradient.png" />
+    <Content Include="data\img\cave.png" />
+    <Content Include="data\img\test.png" />
+    <Content Include="data\img\tillyicon.png" />
+    <Content Include="data\img\titlebg.png" />
+    <Content Include="data\img\ts1.png" />
+    <Content Include="data\img\ts2.png" />
+    <Content Include="data\img\ts3.png" />
     <Content Include="data\img\undergroundblock.png" />
     <Content Include="data\map\2.xml" />
     <Content Include="data\map\underground.png" />
