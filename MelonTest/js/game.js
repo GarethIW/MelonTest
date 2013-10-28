@@ -60,7 +60,7 @@ var game = {
 
 
         // Enemies
-        me.entityPool.add("EnemyFurball", game.EnemyFurball);
+        me.entityPool.add("WalkingEnemy", game.WalkingEnemy);
 
 
         // enable the keyboard
@@ -72,7 +72,7 @@ var game = {
 
         me.input.bindKey(me.input.KEY.L, "levelskip", true); //function () { me.levelDirector.loadLevel("map2"); }.bind(this), true);
 
-        //me.debug.renderHitBox = true;
+        me.debug.renderHitBox = true;
 
         // Start the game.
         me.state.change(me.state.MENU);

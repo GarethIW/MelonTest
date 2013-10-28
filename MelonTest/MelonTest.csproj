@@ -101,7 +101,7 @@
     <Content Include="js\entities\block.js" />
     <Content Include="js\entities\projectile.js" />
     <Content Include="js\entities\jack.js" />
-    <Content Include="js\entities\enemies\furball.js" />
+    <Content Include="js\entities\enemies\walking.js" />
     <Content Include="js\entities\hero.js" />
     <Content Include="js\entities\sweet.js" />
     <Content Include="js\game.js" />

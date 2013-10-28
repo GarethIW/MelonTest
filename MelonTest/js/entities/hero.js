@@ -201,12 +201,22 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
     reset: function () {
        
-        this.pos.x = this.spawnPosition.x;
-        this.pos.y = this.spawnPosition.y;
-        this.dying = false;
-        this.renderable.animationpause = false;
-        this.renderable.setCurrentAnimation("walk");
+        //this.pos.x = this.spawnPosition.x;
+        //this.pos.y = this.spawnPosition.y;
+        //this.dying = false;
+        //this.attacking = false;
+        //this.falling = false;
+        //this.jumping = false;
+        //this.deathTimer = 0;
+        //this.renderable.animationpause = false;
+        //this.renderable.setCurrentAnimation("walk");
+        //this.renderable.setAnimationFrame(0);
+        //this.setVelocity(0.5, 1);
+        //this.setFriction(0.25, 0);
+        //this.setMaxVelocity(5, 15);
         //me.game.viewport.fadeIn("#FFFFFF", 500);
+
+        this.init(this.spawnPosition.x, this.spawnPosition.y, { image: "girl" });
     }
 
 });

@@ -263,12 +263,6 @@
   </object>
  </objectgroup>
  <objectgroup color="#ffff00" name="Blocks" width="75" height="15">
-  <object name="BlockEntity" x="640" y="640" width="64" height="64">
-   <properties>
-    <property name="image" value="block"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
   <object name="BlockEntity" x="768" y="640" width="64" height="64">
    <properties>
     <property name="image" value="block"/>
@@ -338,12 +332,6 @@
     <property name="spritewidth" value="64"/>
    </properties>
   </object>
-  <object name="BlockEntity" x="2752" y="256" width="64" height="64">
-   <properties>
-    <property name="image" value="block"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
   <object name="BlockEntity" x="2944" y="256" width="64" height="64">
    <properties>
     <property name="image" value="block"/>
@@ -352,18 +340,86 @@
   </object>
   <object name="BlockEntity" x="2048" y="640" width="64" height="64">
    <properties>
+    <property name="enemydieframes" value="8"/>
+    <property name="enemyheight" value="110"/>
+    <property name="enemyhp" value="2"/>
+    <property name="enemysheet" value="furball"/>
+    <property name="enemywalkframes" value="5"/>
+    <property name="enemywidth" value="110"/>
+    <property name="image" value="block"/>
+    <property name="spritewidth" value="64"/>
+   </properties>
+  </object>
+  <object name="BlockEntity" x="640" y="640" width="64" height="64">
+   <properties>
+    <property name="image" value="block"/>
+    <property name="spritewidth" value="64"/>
+   </properties>
+  </object>
+  <object name="BlockEntity" x="2752" y="256" width="64" height="64">
+   <properties>
+    <property name="enemydieframes" value="8"/>
+    <property name="enemyheight" value="110"/>
+    <property name="enemyhp" value="2"/>
+    <property name="enemysheet" value="furball"/>
+    <property name="enemywalkframes" value="5"/>
+    <property name="enemywidth" value="110"/>
     <property name="image" value="block"/>
     <property name="spritewidth" value="64"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ff0000" name="Enemies" width="75" height="15">
-  <object name="EnemyFurball" x="512" y="768" width="1216" height="64"/>
-  <object name="EnemyFurball" x="1664" y="192" width="576" height="64"/>
-  <object name="EnemyFurball" x="2688" y="384" width="384" height="64"/>
-  <object name="EnemyFurball" x="3008" y="768" width="640" height="64"/>
-  <object name="EnemyFurball" x="2112" y="768" width="640" height="64"/>
-  <object name="EnemyFurball" x="3840" y="512" width="256" height="64"/>
+  <object name="WalkingEnemy" x="512" y="768" width="1216" height="64">
+   <properties>
+    <property name="dieframes" value="8"/>
+    <property name="hp" value="2"/>
+    <property name="image" value="furball"/>
+    <property name="spriteheight" value="110"/>
+    <property name="spritewidth" value="110"/>
+    <property name="walkframes" value="5"/>
+   </properties>
+  </object>
+  <object name="WalkingEnemy" x="1664" y="192" width="576" height="64">
+   <properties>
+    <property name="dieframes" value="8"/>
+    <property name="hp" value="2"/>
+    <property name="image" value="furball"/>
+    <property name="spriteheight" value="110"/>
+    <property name="spritewidth" value="110"/>
+    <property name="walkframes" value="5"/>
+   </properties>
+  </object>
+  <object name="WalkingEnemy" x="2240" y="576" width="448" height="64">
+   <properties>
+    <property name="dieframes" value="8"/>
+    <property name="hp" value="2"/>
+    <property name="image" value="furball"/>
+    <property name="spriteheight" value="110"/>
+    <property name="spritewidth" value="110"/>
+    <property name="walkframes" value="5"/>
+   </properties>
+  </object>
+  <object name="WalkingEnemy" x="3008" y="768" width="576" height="64">
+   <properties>
+    <property name="dieframes" value="8"/>
+    <property name="hp" value="2"/>
+    <property name="image" value="furball"/>
+    <property name="spriteheight" value="110"/>
+    <property name="spritewidth" value="110"/>
+    <property name="walkframes" value="5"/>
+   </properties>
+  </object>
+  <object name="WalkingEnemy" x="3840" y="512" width="256" height="64">
+   <properties>
+    <property name="dieframes" value="8"/>
+    <property name="hp" value="2"/>
+    <property name="image" value="furball"/>
+    <property name="spriteheight" value="110"/>
+    <property name="spritewidth" value="110"/>
+    <property name="walkframes" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#00aa00" name="Spawn" width="75" height="15">
   <object name="Tilly" x="1" y="689" width="148" height="140">

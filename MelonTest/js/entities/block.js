@@ -14,6 +14,14 @@ game.BlockEntity = me.ObjectEntity.extend({
         this.updateColRect(28, 8, 0, 75);
 
         this.isJack = settings.isjack;
+        this.enemyType = settings.enemy;
+
+        this.enemySheet = settings.enemysheet;
+        this.enemyWidth = settings.enemywidth;
+        this.enemyHeight = settings.enemyheight;
+        this.enemyWalkFrames = settings.enemywalkframes;
+        this.enemyDieFrames = settings.enemydieframes;
+        this.enemyHP = settings.enemyhp;
 
         this.collidable = true;
     },
@@ -43,8 +51,16 @@ game.BlockEntity = me.ObjectEntity.extend({
                     obj.z = 4;
                     me.game.add(obj);
                 }
-            }
-            else {
+            } else if (this.enemySheet) {
+                obj = new game.WalkingEnemy(this.pos.x, this.pos.y, { image: this.enemySheet, spritewidth: this.enemyWidth, spriteheight: this.enemyHeight, z: 0, walkframes: this.enemyWalkFrames, dieframes: this.enemyDieFrames, hp: this.enemyHP });
+                var tween = new me.Tween(obj.pos).to({ y: this.pos.y - (50 + (obj.renderable.height / 2)) }, 500).onComplete((function () { obj.z = 4; obj.collidable = true; obj.spawning = false; obj.walkLeft = false; }).bind(obj));
+                tween.easing(me.Tween.Easing.Quadratic.Out);
+                tween.start();
+                obj.z = 4;
+                obj.collidable = false;
+                obj.spawning = true;
+                me.game.add(obj);
+            } else {
                 obj = new game.SweetEntity(this.pos.x, this.pos.y, { image: "sweets", spritewidth: 48, spriteheight: 48, z: 0 });
                 var tween = new me.Tween(obj.pos).to({ y: this.pos.y - (32 + (obj.renderable.height / 2)) }, 500).onComplete((function () { obj.z = 4; }).bind(obj));
                 tween.easing(me.Tween.Easing.Quadratic.Out);

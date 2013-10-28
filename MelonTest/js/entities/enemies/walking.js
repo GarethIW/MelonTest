@@ -1,43 +1,59 @@
 ﻿
-game.EnemyFurball = me.ObjectEntity.extend({
+game.WalkingEnemy = me.ObjectEntity.extend({
     init: function (x, y, settings) {
         // define this here instead of tiled
-        settings.image = "furball";
-        settings.spritewidth = 110;
+        //settings.image = "furball";
+        //settings.spritewidth = 110;
+        //settings.spriteheight 
 
         // call the parent constructor
         this.parent(x, y, settings);
 
         this.renderable.anim = {};
-        this.renderable.addAnimation("walk", [0, 1, 2, 3, 4]);
-        this.renderable.addAnimation("die", [5, 6, 7, 8, 9, 10, 11, 12]);
+
+        var walkarray = new Array();
+        for (var i = 0; i < settings.walkframes; i++) walkarray[i] = i;
+
+        var diearray = new Array();
+        for (var i = 0; i < settings.dieframes; i++) diearray[i] = settings.walkframes + i;
+
+        // 0-4
+        // 5-12
+
+        this.renderable.addAnimation("walk", walkarray);
+        this.renderable.addAnimation("die", diearray);
         this.renderable.setCurrentAnimation("walk");
 
         this.startX = x;
-        this.endX = x + settings.width - settings.spritewidth;
-        // size of sprite
 
-        // make him start from the right
-        this.pos.x = x + settings.width - settings.spritewidth;
-        this.walkLeft = true;
+        if (settings.width) {
+            this.endX = x + settings.width - settings.spritewidth;
+            this.pos.x = x + settings.width - settings.spritewidth;
+            this.constrained = true;
+            this.walkLeft = true;
+        } else {
+            this.constrained = false;
+            this.walkLeft = false;
+        }
 
-        this.updateColRect(20, 70, 5, 70);
+        this.updateColRect(20, settings.spritewidth-40, 25, settings.spriteheight-40);
 
         // walking & jumping speed
         this.setVelocity(2, 6);
 
         // make it collidable
         this.collidable = true;
+        this.spawning = false;
         // make it a enemy object
         this.type = me.game.ENEMY_OBJECT;
 
-        this.health = 2;
+        this.health = settings.hp;
         this.dying = false;
 
         this.canKnockback = true;
         this.knockbackTime = 0;
 
-        this.constrained = true;
+        
 
         this.alwaysUpdate = true;
 
@@ -73,7 +89,7 @@ game.EnemyFurball = me.ObjectEntity.extend({
         //if (!this.inViewport)
           //  return false;
 
-        if (this.alive && !this.dying && !this.knockbackTime > 0) {
+        if (this.alive && !this.dying && !this.knockbackTime > 0 && !this.spawning) {
             if (this.walkLeft && this.pos.x <= this.startX && this.constrained) {
                 this.walkLeft = false;
             } else if (!this.walkLeft && this.pos.x >= this.endX && this.constrained) {
@@ -109,14 +125,15 @@ game.EnemyFurball = me.ObjectEntity.extend({
         }
 
         
-
-        // check and update movement
-        var res = this.updateMovement();
-        if (res.x != 0) {
-            if (this.walkLeft) {
-                this.walkLeft = false;
-            } else if (!this.walkLeft) {
-                this.walkLeft = true;
+        if (!this.spawning) {
+            // check and update movement
+            var res = this.updateMovement();
+            if (res.x != 0) {
+                if (this.walkLeft) {
+                    this.walkLeft = false;
+                } else if (!this.walkLeft) {
+                    this.walkLeft = true;
+                }
             }
         }
 
@@ -127,7 +144,7 @@ game.EnemyFurball = me.ObjectEntity.extend({
         }
 
         // update animation if necessary
-        if (this.vel.x != 0 || this.vel.y != 0 || this.dying || this.knockback>0) {
+        if (this.vel.x != 0 || this.vel.y != 0 || this.dying || this.knockback>0 || this.spawning) {
             // update object animation
             this.parent();
             return true;
