@@ -25,6 +25,7 @@ game.resources = [
 
     { name: "map1", type: "tmx", src: "data/map/1.xml" },
     { name: "map2", type: "tmx", src: "data/map/2.xml" },
+    { name: "map3", type: "tmx", src: "data/map/3.xml" },
 
     { name: "font", type: "image", src: "data/img/font2.png" },
 
