@@ -64,8 +64,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\img\bat.png" />
     <Content Include="data\img\cave-gradient.png" />
     <Content Include="data\img\cave.png" />
+    <Content Include="data\img\chainsaw.png" />
+    <Content Include="data\img\font2.png" />
+    <Content Include="data\img\knight.png" />
     <Content Include="data\img\test.png" />
     <Content Include="data\img\tillyicon.png" />
     <Content Include="data\img\titlebg.png" />
@@ -74,6 +78,7 @@
     <Content Include="data\img\ts3.png" />
     <Content Include="data\img\undergroundblock.png" />
     <Content Include="data\map\2.xml" />
+    <Content Include="data\map\3.xml" />
     <Content Include="data\map\underground.png" />
     <Content Include="index0910.html" />
     <Content Include="data\bgm\.placeholder" />
@@ -99,6 +104,7 @@
     <Content Include="index.css" />
     <Content Include="index.html" />
     <Content Include="js\entities\block.js" />
+    <Content Include="js\entities\enemies\flying.js" />
     <Content Include="js\entities\projectile.js" />
     <Content Include="js\entities\jack.js" />
     <Content Include="js\entities\enemies\walking.js" />

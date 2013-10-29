@@ -358,12 +358,6 @@
   </object>
   <object name="BlockEntity" x="2752" y="256" width="64" height="64">
    <properties>
-    <property name="enemydieframes" value="8"/>
-    <property name="enemyheight" value="110"/>
-    <property name="enemyhp" value="2"/>
-    <property name="enemysheet" value="furball"/>
-    <property name="enemywalkframes" value="5"/>
-    <property name="enemywidth" value="110"/>
     <property name="image" value="block"/>
     <property name="spritewidth" value="64"/>
    </properties>

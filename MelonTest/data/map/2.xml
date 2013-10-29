@@ -483,6 +483,46 @@
     <property name="walkframes" value="5"/>
    </properties>
   </object>
+  <object name="FlyingEnemy" x="1472" y="320" width="64" height="64">
+   <properties>
+    <property name="dieframes" value="7"/>
+    <property name="hp" value="1"/>
+    <property name="image" value="bat"/>
+    <property name="spriteheight" value="123"/>
+    <property name="spritewidth" value="123"/>
+    <property name="walkframes" value="4"/>
+   </properties>
+  </object>
+  <object name="FlyingEnemy" x="3072" y="256" width="64" height="64">
+   <properties>
+    <property name="dieframes" value="7"/>
+    <property name="hp" value="1"/>
+    <property name="image" value="bat"/>
+    <property name="spriteheight" value="123"/>
+    <property name="spritewidth" value="123"/>
+    <property name="walkframes" value="4"/>
+   </properties>
+  </object>
+  <object name="FlyingEnemy" x="4160" y="128" width="64" height="64">
+   <properties>
+    <property name="dieframes" value="7"/>
+    <property name="hp" value="1"/>
+    <property name="image" value="bat"/>
+    <property name="spriteheight" value="123"/>
+    <property name="spritewidth" value="123"/>
+    <property name="walkframes" value="4"/>
+   </properties>
+  </object>
+  <object name="FlyingEnemy" x="4480" y="512" width="64" height="64">
+   <properties>
+    <property name="dieframes" value="7"/>
+    <property name="hp" value="1"/>
+    <property name="image" value="bat"/>
+    <property name="spriteheight" value="123"/>
+    <property name="spritewidth" value="123"/>
+    <property name="walkframes" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#00aa00" name="Spawn" width="75" height="15">
   <object name="Tilly" x="64" y="0" width="148" height="140">

@@ -194,7 +194,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
             game.data.lives--;
 
-            this.deathTimer = 50;
+            this.deathTimer = 100;
 
         }
     },

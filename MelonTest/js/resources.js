@@ -11,6 +11,9 @@ game.resources = [
     { name: "tillyicon", type: "image", src: "data/img/tillyicon.png" },
 
     { name: "furball", type: "image", src: "data/img/furball.png" },
+    { name: "bat", type: "image", src: "data/img/bat.png" },
+    { name: "knight", type: "image", src: "data/img/knight.png" },
+    { name: "chainsaw", type: "image", src: "data/img/chainsaw.png" },
 
     { name: "sweets", type: "image", src: "data/img/sweets.png" },
     { name: "block", type: "image", src: "data/img/block.png" },

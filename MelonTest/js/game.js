@@ -61,6 +61,7 @@ var game = {
 
         // Enemies
         me.entityPool.add("WalkingEnemy", game.WalkingEnemy);
+        me.entityPool.add("FlyingEnemy", game.FlyingEnemy);
 
 
         // enable the keyboard
