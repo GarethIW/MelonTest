@@ -30,6 +30,8 @@ game.TitleScreen = me.ScreenObject.extend({
         this.ts1 = new me.SpriteObject(-190, 255, me.loader.getImage("ts1"));
         this.ts2 = new me.SpriteObject(200, -280, me.loader.getImage("ts2"));
         this.ts3 = new me.SpriteObject(1067, 380, me.loader.getImage("ts3"));
+
+        this.startText = new game.TitleScreen.StartText(me.game.viewport.width/2, 500);
         //this.addChild(this.ts1);
 
         //195, 255
@@ -45,7 +47,21 @@ game.TitleScreen = me.ScreenObject.extend({
         tween = new me.Tween(this.ts2.pos).to({ y: 280 }, 1000).onComplete(null);
         tween.easing(me.Tween.Easing.Bounce.Out);
         tween.start();
+        
+        this.textin();
     },
+
+    textin: function(){
+        var tween = new me.Tween(this.startText).to({ textScale: 0.8 }, 1000).onComplete(this.textout.bind(this));
+        tween.easing(me.Tween.Easing.Quadratic.InOut);
+        tween.start();
+    },
+    textout: function(){
+        var tween = new me.Tween(this.startText).to({ textScale: 0.9 }, 1000).onComplete(this.textin.bind(this));
+        tween.easing(me.Tween.Easing.Quadratic.InOut);
+        tween.start();
+    },
+
 
     // update function
     update: function () {
@@ -53,6 +69,8 @@ game.TitleScreen = me.ScreenObject.extend({
             me.state.change(me.state.PLAY);
            // me.game.viewport.fadeOut(this.fade, this.duration);
         }
+
+        this.startText.update();
         return true;
 
     },
@@ -63,7 +81,7 @@ game.TitleScreen = me.ScreenObject.extend({
         this.ts2.draw(context);
         this.ts3.draw(context);
         this.ts1.draw(context);
-
+        this.startText.draw(context);
     },
 
     // destroy function
@@ -76,5 +94,30 @@ game.TitleScreen = me.ScreenObject.extend({
         game.data.lives = 3;
     }
 
+});
+
+game.TitleScreen.StartText = me.Renderable.extend({
+    init: function (x, y) {
+        this.parent(new me.Vector2d(x, y), 10, 10);
+
+        this.font = new me.BitmapFont("font", { x: 32, y: 32 });
+        this.font.alignText = "bottom";
+        this.font.set("center", 1);
+
+        this.textScale = 1;
+
+        this.floating = true;
+    },
+
+    update: function () {
+        this.font.resize(this.textScale);
+
+        return true;
+    },
+
+    draw: function (context) {
+        this.font.draw(context, "Press SPACE to start!", this.pos.x, this.pos.y);
+
+    }
 });
 
