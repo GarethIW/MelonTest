@@ -48,7 +48,7 @@ game.JackEntity = me.CollectableEntity.extend({
             tween.easing(me.Tween.Easing.Quadratic.In);
             tween.start();
 
-            obj.jacks++;
+            game.data.jacks++;
 
             this.z = 10;
 

@@ -591,6 +591,16 @@
     <property name="walkframes" value="6"/>
    </properties>
   </object>
+  <object name="WalkingEnemy" x="4352" y="64" width="384" height="64">
+   <properties>
+    <property name="dieframes" value="9"/>
+    <property name="hp" value="3"/>
+    <property name="image" value="knight"/>
+    <property name="spriteheight" value="200"/>
+    <property name="spritewidth" value="200"/>
+    <property name="walkframes" value="6"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#00aa00" name="Spawn" width="75" height="15">
   <object name="Tilly" x="64" y="0" width="148" height="140">

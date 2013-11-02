@@ -82,6 +82,8 @@
     <Content Include="data\map\4.xml" />
     <Content Include="data\map\5.xml" />
     <Content Include="data\map\underground.png" />
+    <Content Include="data\sfx\enemy_hit.mp3" />
+    <None Include="data\sfx\enemy_hit.oga" />
     <Content Include="index0910.html" />
     <Content Include="data\bgm\.placeholder" />
     <Content Include="data\img\block.png" />

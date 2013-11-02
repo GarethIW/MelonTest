@@ -69,7 +69,7 @@ game.SweetEntity = me.CollectableEntity.extend({
 
     endCollect: function () {
         // remove it
-        game.data.score++;
+        game.data.score+=10;
         me.game.remove(this);
     }
 

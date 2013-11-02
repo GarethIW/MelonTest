@@ -68,6 +68,8 @@ game.FlyingEnemy = me.ObjectEntity.extend({
                 else {
                     this.die();
                 }
+                me.audio.play("enemy_hit", false, null, 0.8);
+
             }
             else if (obj instanceof game.PlayerEntity) {
                 obj.die();
@@ -153,6 +155,6 @@ game.FlyingEnemy = me.ObjectEntity.extend({
         this.dying = true;
         this.gravity = 0.98;
         this.renderable.setCurrentAnimation("die");
-        game.data.score += 5;
+        game.data.score += 50;
     }
 });

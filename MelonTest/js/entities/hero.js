@@ -43,8 +43,6 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         this.facing = 1;
 
-        this.jacks = 0;
-
         this.vppos = new me.Vector2d(x, y);
 
         this.spawnPosition = new me.Vector2d(x, y);
@@ -111,11 +109,11 @@ game.PlayerEntity = me.ObjectEntity.extend({
                     me.audio.play("melee", false, null, 1);
                 }
             }
-            if (me.input.isKeyPressed("throw") && this.jacks > 0) {
+            if (me.input.isKeyPressed("throw") && game.data.jacks > 0) {
                 var bul = new game.ProjectileEntity((this.pos.x + (this.renderable.hWidth - 15)) + (this.facing * 10), this.pos.y+90, { x: this.facing * 15, y: 0 }, { image: "jack", spritewidth: 30, spriteheight: 32 });
                 me.game.add(bul);
 
-                this.jacks--;
+                game.data.jacks--;
             }
 
 
@@ -154,7 +152,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
             //}
         }
 
-        game.data.jacks = this.jacks;
+        //game.data.jacks = this.jacks;
 
         if (this.dying && this.renderable.anim["die"].idx == 7) {
             this.renderable.animationpause = true;
@@ -190,7 +188,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
             this.dying = true;
             this.renderable.setCurrentAnimation("die");
             this.renderable.setAnimationFrame(0);
-            me.audio.play("tilly_die", false, null, 1);
+            me.audio.play("tilly_die", false, null, 0.6);
 
             game.data.lives--;
 
@@ -201,22 +199,22 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
     reset: function () {
        
-        //this.pos.x = this.spawnPosition.x;
-        //this.pos.y = this.spawnPosition.y;
-        //this.dying = false;
-        //this.attacking = false;
-        //this.falling = false;
-        //this.jumping = false;
-        //this.deathTimer = 0;
-        //this.renderable.animationpause = false;
-        //this.renderable.setCurrentAnimation("walk");
-        //this.renderable.setAnimationFrame(0);
-        //this.setVelocity(0.5, 1);
-        //this.setFriction(0.25, 0);
-        //this.setMaxVelocity(5, 15);
+        this.pos.x = this.spawnPosition.x;
+        this.pos.y = this.spawnPosition.y;
+        this.dying = false;
+        this.attacking = false;
+        this.falling = false;
+        this.jumping = false;
+        this.deathTimer = 0;
+        this.renderable.animationpause = false;
+        this.renderable.setCurrentAnimation("walk");
+        this.renderable.setAnimationFrame(0);
+        this.setVelocity(0.5, 1);
+        this.setFriction(0.25, 0);
+        this.setMaxVelocity(5, 15);
         //me.game.viewport.fadeIn("#FFFFFF", 500);
 
-        this.init(this.spawnPosition.x, this.spawnPosition.y, { image: "girl" });
+        //this.init(this.spawnPosition.x, this.spawnPosition.y, { image: "girl" });
     }
 
 });

@@ -36,7 +36,8 @@ game.resources = [
 
 	{ name: "jump", type: "audio", src: "data/sfx/", channel: 2 },
     { name: "melee", type: "audio", src: "data/sfx/", channel: 3 },
-    { name: "tilly_die", type: "audio", src: "data/sfx/", channel: 2 }
+    { name: "tilly_die", type: "audio", src: "data/sfx/", channel: 2 },
+    { name: "enemy_hit", type: "audio", src: "data/sfx/", channel: 1 }
 
 
 	/* Graphics. 

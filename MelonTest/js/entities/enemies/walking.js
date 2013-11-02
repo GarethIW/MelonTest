@@ -7,7 +7,7 @@ game.WalkingEnemy = me.ObjectEntity.extend({
         //settings.spriteheight 
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this.parent(x, y-10, settings);
 
         this.renderable.anim = {};
 
@@ -76,6 +76,8 @@ game.WalkingEnemy = me.ObjectEntity.extend({
                 else {
                     this.die();
                 }
+                me.audio.play("enemy_hit", false, null, 0.8);
+
             }
             else if (obj instanceof game.PlayerEntity) {
                 obj.die();
@@ -166,6 +168,6 @@ game.WalkingEnemy = me.ObjectEntity.extend({
     die: function () {
         this.dying = true;
         this.renderable.setCurrentAnimation("die");
-        game.data.score += 5;
+        game.data.score += 50;
     }
 });

@@ -88,6 +88,7 @@ game.TitleScreen = me.ScreenObject.extend({
     onDestroyEvent: function () {
         me.input.bindKey(me.input.KEY.X, "attack", true);
         me.input.bindKey(me.input.KEY.Z, "throw", true);
+        me.input.bindKey(me.input.KEY.SPACE, "jump", true);
 
         game.data.score = 0;
         game.data.jacks = 0;
